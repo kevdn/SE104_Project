@@ -23,10 +23,10 @@ const MenuFunction = () => {
                     { label: "Thay đổi quy định", key:"/ChangingRules", icon: <MdOutlineRule />},
                     { label: "Thiết bị", key:"/Devices", icon: <MdElectricalServices />},
                     { label: "Dịch vụ", key:"/Services", icon: <RiCustomerServiceLine />, children: [
-                        { label: "Trả hàng", key:"/Service1" },
-                        { label: "Sửa chữa", key:"/Service2" },
-                        { label: "Bán hàng", key:"/Service3" },
-                        { label: "Nhập hàng", key:"/Service4" },
+                        { label: "Nhập hàng", key:"/Service1" },
+                        { label: "Bán hàng", key:"/Service2" },
+                        { label: "Trả hàng", key:"/Service3" },
+                        { label: "Sửa chữa", key:"/Service4" },
                         { label: "Bảo hành", key:"/Service5" },
                     ]},
                     { label: "Thống kê", key:"/Statistics", icon: <IoStatsChart />, children: [

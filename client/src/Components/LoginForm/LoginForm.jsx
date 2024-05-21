@@ -23,7 +23,7 @@ const Login = () => {
                 <form action="">
                     <h1>Đăng nhập</h1>
                     <div className='inputBox'>
-                        <input type="text" placeholder="Email/Số điện thoại" required=""/>
+                        <input type="text" placeholder="Số điện thoại" required=""/>
                         <FaUser className='icon'/>
                     </div>
                     <div className='inputBox'>

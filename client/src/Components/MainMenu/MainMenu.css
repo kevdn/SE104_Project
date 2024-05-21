@@ -50,5 +50,16 @@ body.wrapper3 {
     font-weight: 600;
     padding-top: 90px;
     background-color: #F9F4F1;
+}
+
+.Service {
+    width: 100vw;
+    height: 100vh;
+    font-weight: 600;
+    padding-top: 90px;
+    display: flex; /* Add this line */
+    justify-content: center; /* Add this line */
+    align-items: center; /* Add this line */
+    background-color: #F9F4F1;
     
 }
