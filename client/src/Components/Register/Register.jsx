@@ -20,7 +20,7 @@ const Register = () => {
                         <input type="text" placeholder="Tên" required=""/>
                     </div>
                     <div className='inputBox'>
-                        <input type="text" placeholder="Số điện thoại" required=""/>
+                        <input type="text" placeholder="Email/Số điện thoại" required=""/>
                         <FaUser className='icon'/>
                     </div>
                     <div className='inputBox'>

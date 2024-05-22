@@ -1,0 +1,89 @@
+@import url(MainMenu.css);
+
+
+.FormContainer {
+    display: flex;
+    justify-content: space-between; /* Align divs evenly */
+    flex-wrap: wrap; /* Allow wrapping for better responsiveness */
+}
+
+.CustomerName, .CustomerEmail, .CustomerPhone, .CustomerStatus {
+    flex: 1; /* Ensure each div takes enough space */
+    margin-right: 10px; /* Space between divs */
+    min-width: 200px; /* Ensure minimum width for better responsiveness */
+}
+
+.CustomerName .form-control,
+.CustomerEmail .form-control,
+.CustomerPhone .form-control,
+.CustomerStatus .form-control {
+    width: 100%;
+}
+
+.search-bar {
+    margin: 100px auto 20px;
+    width: 100%; /* Set the width to 100% */
+    position: relative; /* Ensure the search results are positioned correctly */
+}
+
+.search-bar .form-control,
+.search-bar .form-select {
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.table-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+.table thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.search-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-button {
+    background-color: #9B4A47;
+    border-color: #9B4A47;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #872b29;
+    border-color: #872b29;
+}

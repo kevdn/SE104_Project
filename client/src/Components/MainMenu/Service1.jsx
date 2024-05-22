@@ -1,14 +1,13 @@
 import { Menu } from 'antd';
 import "./MainMenu.css";
 import MenuFunction from './MenuFunction';
-import './Services.css'
-import { useState } from 'react';
+import { FaUser, FaLock } from "react-icons/fa";
 
 const MainMenu = () => {
 
     return (
         <body className="wrapper3">
-            <div className='header'>NHẬP HÀNG</div>
+            <div className='header'>TRẢ HÀNG</div>
             <MenuFunction />
             <Content />
         </body>
@@ -17,45 +16,29 @@ const MainMenu = () => {
  
 
 const Content = () => {
-    const [selectedNumber, setSelectedNumber] = useState(1);
-
-    const handleSelectChange = (event) => {
-        setSelectedNumber(Number(event.target.value));
-    };
-    
-
     return (
-        <div className='Service'>
-            <div className='serviceWrapper'>
+        <div className='Content'>
+            <div className='wrapper'>
                 <form action="">
-                    <h1>Phiếu nhập hàng</h1>
+                    <h1>Phiếu trả hàng(chưa format)</h1>
                     <div className='register'></div>
                     <div className='inputBox2'>
-                        <input className='provider' type="text" placeholder="Tên nhà cung cấp" required=""/>
-                        <input className='dateProvided' type="text" placeholder="Ngày nhập" required=""/>
-                        <input className='phone' type="text" placeholder="Số điện thoại" required=""/>
-                        <input className='address' type="text" placeholder="Địa chỉ" required=""/>
+                        <input type="text" placeholder="Họ" required=""/>
+                        <input type="text" placeholder="Tên" required=""/>
                     </div>
-                    <div className='register'></div>
-                    <div className='dropDown'>
-                        <a>Nhập số lượng sản phẩm:</a>
-                        <select onChange={handleSelectChange}>
-                            {[...Array(8)].map((_, i) => <option key={i} value={i+1}>{i+1}</option>)}
-                        </select>
+                    <div className='inputBox'>
+                        <input type="text" placeholder="Email/Số điện thoại" required=""/>
+                        <FaUser className='icon'/>
                     </div>
-                    {[...Array(selectedNumber)].map((_, i) => (
-                        <div key={i} className='dropDownInputRow'>
-                            <a>{ i + 1 }</a>
-                            <input type="text" placeholder="Tên sản phẩm" required=""/>
-                            <input type="text" placeholder="Loại sản phẩm" required=""/>
-                            <input type="text" placeholder="Ngày sản xuất" required=""/>
-                            <input type="text" placeholder="Thời hạn bảo hành" required=""/>
-                            <input className='quantity' type="text" placeholder="Số lượng" required=""/>
-                            <input type="text" placeholder="Đơn giá" required=""/>
-                            <input type="text" placeholder="Thành tiền" required=""/>
-                        </div>
-                    ))}
-                    <div className='buttonDiv'><button type="button">Nhập</button></div>
+                    <div className='inputBox'>
+                        <input type="password" placeholder="Mật khẩu" required=""/>
+                        <FaLock className='icon'/>
+                    </div>
+                    <div className='inputBox'>
+                        <input type="password" placeholder="Xác nhận mật khẩu" required=""/>
+                        <FaLock className='icon'/>
+                    </div>
+                    <button type="button">Đăng ký</button>
 
                     <div className='register'></div>
                 </form>
