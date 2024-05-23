@@ -1,12 +1,12 @@
-function validation(values) {
-    let error = {}
-    const phoneNumberPattern = /^\d{10}$/
-    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/
+function validation(values){
+    let error = {};
+    const tel_pattern = /^\d{10}$/
+    const password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
     if (values.tel === ""){
         error.tel = "Số điện thoại không được để trống"
     }
-    else if (!phoneNumberPattern.test(values.tel)) {
+    else if (!tel_pattern.test(values.tel)){
         error.tel = "Số điện thoại không hợp lệ"
     }
     else {
@@ -16,12 +16,13 @@ function validation(values) {
     if (values.password === ""){
         error.password = "Mật khẩu không được để trống"
     }
-    else if (!passwordPattern.test(values.password)) {
+    else if (!password_pattern.test(values.password)){
         error.password = "Mật khẩu không hợp lệ"
     }
     else {
         error.password = ""
     }
+
     return error;
 }
 
