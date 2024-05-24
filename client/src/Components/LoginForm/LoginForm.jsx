@@ -8,40 +8,33 @@ import axios from 'axios'
 const Login = () => {
     const navigate = useNavigate();
 
-    const handleRegister = () => {
+    const handleRegister = (event) => {
+        event.preventDefault();
         navigate("/Register");
     }
 
-    const handleForgot = () => {
+    const handleForgot = (event) => {
+        event.preventDefault();
         navigate("/Forgot");
     }
 
-    const [values, setValues] = useState({
-        tel: '',
-        password: ''
-    })
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [errors, setErrors] = useState({})
-
-    const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-    }
-
-    const handleSubmit = (event) => {   
-        event.preventDefault();
-        setErrors(validation(values));
-        if (errors.name === "" && errors.tel === "" && errors.password === ""){
-            axios.post('http://localhost:3001/login', values)
-            .then(res => {
-                if (res.data === "Success") {
-                    navigate("/MainMenu");
-                } else {
-                    alert("No account found");
-                }
-            })
-            .catch(err => console.log(err));
+   function handleSubmit(event){
+    event.preventDefault();
+    axios.post('http://localhost:3001/login', {username, password})
+    .then(res => {
+        if (res.data === "Success"){
+            navigate("/MainMenu");
         }
-    }
+        else {
+            alert("Sai tên đăng nhập hoặc mật khẩu");
+        }
+        
+    })
+    .catch(err => console.log(err))
+   }
 
     return (
         <body className="wrapper2">
@@ -49,15 +42,15 @@ const Login = () => {
                 <form action="" onSubmit={handleSubmit}>
                     <h1>Đăng nhập</h1>
                     <div className='inputBox'>
-                        <input type="text" placeholder="Số điện thoại" name='tel'
-                        onChange={handleInput}/>
-                        {errors.tel && <span className="text-danger"> {errors.tel}</span>}
+                        <input type="text" placeholder="Số điện thoại" name='username'
+                        onChange={(event) => {setUsername(event.target.value);}}/>
+                        {/* {errors.tel && <span className="text-danger"> {errors.tel}</span>} */}
                         <FaUser className='icon'/>
                     </div>
                     <div className='inputBox'>
                         <input type="password" placeholder="Mật khẩu" name='password'
-                        onChange={handleInput}/>
-                        {errors.password && <span className="text-danger"> {errors.password}</span>}
+                        onChange={(event) => {setPassword(event.target.value);}}/>
+                        {/* {errors.password && <span className="text-danger"> {errors.password}</span>} */}
                         <FaLock className='icon'/>
                     </div>
 
@@ -65,7 +58,7 @@ const Login = () => {
                         <a href="" onClick={handleForgot}>Quên mật khẩu?</a>
                     </div>
                     
-                    <button type="submit">Đăng nhập</button>
+                    <button>Đăng nhập</button>
 
                     <div className='register'>
                         <p>Chưa có tài khoản? <a href="" onClick={handleRegister}>Đăng ký</a></p>
