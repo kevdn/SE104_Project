@@ -3,8 +3,8 @@ create database `QLCHTBDT`;
 use `QLCHTBDT`;
 
 create table `PHIEUNHAPHANG`(
-	MaPhieuNhap varchar(255) primary key not null,
-	MaNhaCungCap varchar(255) not null,
+	MaPhieuNhap INT AUTO_INCREMENT primary key ,
+	MaNhaCungCap INT not null,
 	NgayNhap date not null,
 	TraTruoc INT not null, 
 	TongTien INT not null
@@ -12,16 +12,16 @@ create table `PHIEUNHAPHANG`(
 
 
 create table `CT_PNH`(
-	MaCT_PNH varchar(255) primary key not null,
-	MaPhieuNhap varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaCT_PNH INT AUTO_INCREMENT primary key,
+	MaPhieuNhap INT not null,
+	MaSanPham INT not null,
 	SoLuong SMALLINT not null,
 	DonGia INT not null,
 	ThanhTien INT not null
 );
 
 create table `NHACUNGCAP`(
-	MaNhaCungCap varchar(255) primary key not null,
+	MaNhaCungCap INT AUTO_INCREMENT primary key,
 	TenNhaCungCap Varchar(255) not null,
 	DiaChi Varchar(255)  not null,
 	ConNo INT not null, 
@@ -30,15 +30,15 @@ create table `NHACUNGCAP`(
 );
 
 create table `LOAISANPHAM`(
-	MaLoaiSanPham varchar(255) primary key not null,
-	TenLoaiSanPham varchar(255) not null
+	MaLoaiSanPham INT AUTO_INCREMENT primary key ,
+	TenLoaiSanPham INT not null
 );
 
 
 create table `SANPHAM`(
-	MaSanPham varchar(255) primary key not null,
+	MaSanPham INT AUTO_INCREMENT primary key ,
 	TenSanPham varchar(255) not null,
-	MaLoaiSanPham varchar(255) not null,
+	MaLoaiSanPham INT not null,
 	NgaySanXuat date not null,
 	ThoiGianBaoHanh smallINT not null,
 	SoLuongTon smallINT not null, 
@@ -46,10 +46,10 @@ create table `SANPHAM`(
 );
 
 create table `PHIEUBANHANG`(
-	MaPhieuBan varchar(255) primary key not null,
-	MaKhachHang varchar(255) not null,
+	MaPhieuBan INT AUTO_INCREMENT primary key ,
+	MaKhachHang INT not null,
 	NgayBan date not null,
-	MaHTTT varchar(255) not null,
+	MaHTTT INT not null,
 	NhanVienBanHang varchar(255) not null,
 	ChieuKhau float(24) not null,
 	TongGiaTriHD int not null	
@@ -58,91 +58,91 @@ create table `PHIEUBANHANG`(
 
 
 create table `CT_PBH`(
-	MaCT_PBH varchar(255) primary key not null,
-	MaPhieuBan varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaCT_PBH INT AUTO_INCREMENT primary key,
+	MaPhieuBan INT not null,
+	MaSanPham INT not null,
 	SoLuong smallint not null,
 	DonGia int not null,
 	ThanhTien int not null
 );
 
 create table `KHACHHANG`(
-	MaKhachHang varchar(255) primary key not null,
+	MaKhachHang INT AUTO_INCREMENT primary key,
 	TenKhachHang varchar(255) not null,
-	MaLoaiKhachHang varchar(255) not null,
+	MaLoaiKhachHang INT not null,
 	SDT varchar(20) not null
 );
 
 create table `LOAIKHACHHANG`(
-	MaLoaiKhachHang varchar(255) primary key not null,
+	MaLoaiKhachHang INT AUTO_INCREMENT primary key,
 	TenLoaiKhachHang varchar(255) not null
 );
 
 create table `HINHTHUCTHANHTOAN`(
-	MaHTTT varchar(255) primary key not null,
+	MaHTTT INT AUTO_INCREMENT primary key,
 	TenHTTT varchar(255) not null
 );
 
 create table `PHIEUBAOHANH`(
-	MaPhieuBH varchar(255) primary key not null,
-	MaKhachHang varchar(255) not null,
+	MaPhieuBH INT AUTO_INCREMENT primary key,
+	MaKhachHang INT not null,
 	NgayTiepNhan date not null,
 	NhanVienTiepNhan varchar(255) not null
 );
 
 create table `CT_PBHANH`(
-	MaCT_PBHANH varchar(255) primary key not null,
-	MaPhieuBH varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaCT_PBHANH INT AUTO_INCREMENT primary key,
+	MaPhieuBH INT not null,
+	MaSanPham INT not null,
 	SoLuong smallint not null,
 	NgayUocTinhTraLai date not null,
 	GhiChu varchar(255) not null
 );
 
 create table `PHIEUSUACHUA`(
-	MaPhieuSuaChua varchar(255) primary key not null,
-	MaKhachHang varchar(255) not null,
+	MaPhieuSuaChua INT AUTO_INCREMENT primary key,
+	MaKhachHang INT not null,
 	NgayTienNhan date not null, 
 	NhanVienTiepNhan varchar(255) not null,
 	TongTien INT not null
 );
 
 create table `CT_PSC`(
-	MaCT_PSC varchar(255) primary key not null,
-	MaPhieuSC varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaCT_PSC INT AUTO_INCREMENT primary key,
+	MaPhieuSC INT not null,
+	MaSanPham INT not null,
 	TinhTrang varchar(255) not null,
-	MaTienCong varchar(255) not null,
+	MaTienCong INT not null,
 	SoLuong smallint not null,
 	DonGia int not null, 
 	ThanhTien int not null
 );
 
 create table `LOAITIENCONG`(
-	MaTienCong varchar(255) primary key not null,
+	MaTienCong INT AUTO_INCREMENT primary key,
 	SoLuong INT not null
 );
 
 create table `PHIEUTRAHANG`(
-	MaPhieuTra varchar(255) primary key not null,
-	MaKhachHang varchar(255) not null, 
+	MaPhieuTra INT AUTO_INCREMENT primary key,
+	MaKhachHang INT not null, 
 	NgayTraHang date not null,
 	NhanVienTiepNhan varchar(255) not null
 );
 
 create table `CT_PTH`(
-	MaCT_PTH varchar(255) primary key not null,
-	MaPhieuTra varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaCT_PTH INT AUTO_INCREMENT primary key,
+	MaPhieuTra INT not null,
+	MaSanPham INT not null,
 	SoLuong INT not null, 
-	MaPhieuBan varchar(255) not null,
+	MaPhieuBan INT not null,
 	LyDo varchar(255) not null
 );
 
 create table `PBCDTT`(
-	MaPBCDT varchar(255) primary key not null,
-	MaPhieuBan varchar(255) not null,
-	MaSanPham varchar(255) not null,
+	MaPBCDT INT AUTO_INCREMENT primary key,
+	MaPhieuBan INT not null,
+	MaSanPham INT not null,
 	SoLuotMua int not null, 
 	SoLuotBaoHanh int not null, 
 	SoLuotSuaChua int not null,
@@ -151,23 +151,23 @@ create table `PBCDTT`(
 );
 
 create table `BAOCAOCONGNO`(
-	MaBaoCao varchar(255) primary key not null,
-	MaNhaCungCap varchar(255) not null,
+	MaBaoCao INT AUTO_INCREMENT primary key,
+	MaNhaCungCap INT not null,
 	NoDau int not null, 
 	PhatSinh int not null,
 	NoCuoi int not null
 );
 
 create table `TAIKHOAN`(
-	MaTK varchar(255) primary key not null,
+	MaTK INT AUTO_INCREMENT primary key,
 	TenTK varchar(255) not null,
 	MatKhau varchar(255) not null,
-	MaChucVu varchar(255) not null
+	MaChucVu INT not null
 );
 
 create table `NHANVIEN`(
-	MaNhanVien varchar(255) primary key not null,
-	MaTK varchar(255) not null,
+	MaNhanVien INT AUTO_INCREMENT primary key,
+	MaTK INT not null,
 	HoTen varchar(255) not null,
 	NgaySinh date not null, 
 	CCCD varchar(255) not null,
@@ -176,19 +176,19 @@ create table `NHANVIEN`(
 );
 
 create table `CHUCVU`(
-	MaChucVu varchar(255) primary key not null,
+	MaChucVu INT AUTO_INCREMENT primary key,
 	TenChucVu varchar(255) not null
 );
 
 create table `CT_CHUCVU`(
-	MaCTChucVu varchar(255) primary key not null,
-	MaChucVu varchar(255) not null,
-	MaQuyen varchar(255) not null,
+	MaCTChucVu INT AUTO_INCREMENT primary key,
+	MaChucVu INT not null,
+	MaQuyen INT not null,
 	DuocPhep BIT not null
 );
 
 create table `QUYEN`(
-	MaQuyen varchar(255) primary key not null,
+	MaQuyen INT AUTO_INCREMENT primary key,
 	TenQuyen varchar(255) not null
 );
 
