@@ -25,7 +25,6 @@ create table `NHACUNGCAP`(
 	TenNhaCungCap Varchar(255) not null,
 	DiaChi Varchar(255)  not null,
 	ConNo INT not null, 
-	ChiPhiPhatSinh INT not null,
 	SoDienThoai varchar(20) not null
 );
 
