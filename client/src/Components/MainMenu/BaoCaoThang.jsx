@@ -3,10 +3,29 @@ import { useState } from "react";
 import moment from "moment";
 import MenuFunction from "./MenuFunction";
 import "./BaoCaoThang.css";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const { Option } = Select;
 
 const MainMenu = () => {
+
+  const navigate = useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:3001/BaoCaoThang", {
+            headers :{
+                accessToken: localStorage.getItem("TruongPhongToken")
+            }
+        })
+        .then((res) => {
+            if (res.data.err){
+                alert(res.data.err);
+                navigate(-1)
+            }       
+        })
+    }, [navigate])
+
+
   const [selectedMonth, setSelectedMonth] = useState(moment().month() + 1);
   const [selectedYear, setSelectedYear] = useState(moment().year());
   const [reportData, setReportData] = useState([]);
