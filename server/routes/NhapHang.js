@@ -4,7 +4,7 @@ const db = require('../middlewares/db');
 
 
 const checkProvider = async (provider) => {
-  const query = `SELECT * FROM NHACUNGCAP WHERE TenNhaCungCap = '${provider}'`;
+  const query = `SELECT * FROM NHACUNGCAP WHERE  TenNhaCungCap = '${provider}'`;
   const [rows] = await db.promise().query(query);
   return rows.length > 0;
 };
@@ -13,7 +13,7 @@ const insertProvider = async (provider, diaChi, SoDienThoai, No) => {
   await db.promise().query(query);
 };
 
-router.post('/', async (req, res) => {    
+router.post('/NhapHang', async (req, res) => {    
     const data = req.body;
 
     // Connect to the database.
