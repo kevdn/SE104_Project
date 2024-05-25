@@ -7,7 +7,7 @@ const db = require('../middlewares/db');
 
 router.post("/login", (req, res) => {
     const {username, password} = req.body;
-    const sql = "SELECT * FROM TAIKHOAN WHERE TenTK = ?";
+    const sql = "SELECT * FROM TAIKHOAN WHERE MaTK = ?";
     db.query(sql,[username, password], (err, data) => {
         if (err){
             console.log(err);
