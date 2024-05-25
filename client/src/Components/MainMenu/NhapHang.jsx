@@ -4,32 +4,31 @@ import MenuFunction from "./MenuFunction";
 import "./Services.css";
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const MainMenu = () => {
 
-  // const navigate = useNavigate()
-  //   useEffect(() => {
-  //       axios.get("http://localhost:3001/NhapHang", {
-  //           headers :{
-  //               accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
-  //           }
-  //       })
-  //       .then((res) => {
-  //           if (res.data.err){
-  //               alert(res.data.err);
-  //               navigate("/")
-  //           }       
-  //       })
-  //   }, [navigate])
-  // return (
-  //   <div className="wrapper3">
-  //     <div className="header">NHẬP HÀNG</div>
-  //     <MenuFunction />
-  //     <Content />
-  //   </div>
+  const navigate = useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:3001/NhapHang", {
+            headers :{
+                accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
+            }
+        })
+        .then((res) => {
+            if (res.data.err){
+                alert("Chưa đăng nhập");
+                navigate(-1)
+            }       
+        })
+    }, [navigate])
+  return (
+    <div className="wrapper3">
+      <div className="header">NHẬP HÀNG</div>
+      <MenuFunction />
+      <Content />
+    </div>
   );
 };
 
