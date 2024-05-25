@@ -1,8 +1,8 @@
 use `QLCHTBDT`;
 
-insert into `LOAISANPHAM` values (1, 'Laptop');
-insert into `LOAISANPHAM` values (2, 'Dien thoai');
-insert into `LOAISANPHAM` values (3, 'May tinh bang'); 
+insert into `LOAISANPHAM` values (1, 'Laptop', 10);
+insert into `LOAISANPHAM` values (2, 'Dien thoai', 20);
+insert into `LOAISANPHAM` values (3, 'May tinh bang', 30); 
 
 
 insert `LOAIKHACHHANG` values (1, 'Khach hang si');
