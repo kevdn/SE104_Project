@@ -1,54 +1,92 @@
-import { FaUser, FaLock, FaPhone, FaAddressCard } from "react-icons/fa";
-import { FaHouse } from "react-icons/fa6";
-import { MdOutlineDateRange } from "react-icons/md";
+import { FaUser, FaLock, FaPhone } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
+import axios from 'axios'
+import { useState, useEffect } from "react";
 
 const Register = () => {
     const navigate = useNavigate();
+    
+    // const [chucVu, setChucVu] = ([]);
+    // useEffect(() => {
+    //     axios.get("http://localhost:3001/register")
+    //         .then(res => {
+    //             setChucVu(res.data);
+    //         })
+    //         .catch(err => console.log("Error in getting data"));
+    // }, []);
 
-    const handleRegister = () => {
-        navigate("/");
-    }
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [role, setRole] = useState("");
+    const [idNumber, setIdNumber] = useState("");
+    function handleSubmit(event){
+        event.preventDefault();
+        axios.post('http://localhost:3001/register', {idNumber, username, password, name, role})
+        .then(res => {
+            if (res.data === "Register success"){
+                navigate("/");
+            }
+            else {
+                alert("Thông tin đăng ký không hợp lệ");
+            }
+        })
+        .catch(err => console.log(err))
+   }
+
 
     return (
         <body className="wrapper2">
             <div className='wrapper'>
-                <form action="">
+                <form action="" onSubmit={handleSubmit}>
                     <h1>Đăng ký</h1>
                     <div className='register'></div>
                     <div className='inputBox'>
-                        <input type="text" placeholder="Số điện thoại" required=""/>
+                        <input type="text" placeholder="Số điện thoại" required="" name="username"
+                        onChange={(event) => {setUsername(event.target.value);}}/>
                         <FaPhone className='icon'/>
                     </div>
+
                     <div className='inputBox'>
-                        <input type="password" placeholder="Mật khẩu" required=""/>
+                        <input type="password" placeholder="Mật khẩu" required=""name="password"
+                        onChange={(event) => {setPassword(event.target.value);}}/>
                         <FaLock className='icon'/>
                     </div>
-                    <div className='inputBox2'>
-                        <input type="text" placeholder="Họ và tên" required=""/>
+                    
+                    <div className='inputBox'>
+                        <input type="text" placeholder="Căn cước công dân" required=""name="idNumber"
+                        onChange={(event) => {setIdNumber(event.target.value);}}/>
                         <FaUser className='icon'/>
-                        <input type="text" placeholder="Ngày sinh" required=""/>
-                        <MdOutlineDateRange className='icon2'/>
+                    </div>
+
+                    <div className='inputBox'>
+                        <input type="text" placeholder="Họ và tên" required=""name="name"
+                        onChange={(event) => {setName(event.target.value);}}/>
+                        <FaUser className='icon'/>
                     </div>
                     <div className='inputBox'>
-                        <input type="text" placeholder="Địa chỉ" required=""/>
-                        <FaHouse className='icon'/>
+                        <input type="text" placeholder="Mã chức vụ" required="" name="role"
+                        onChange={(event) => {setRole(event.target.value);}}/>
                     </div>
-                    <div className='inputBox2'>
-                        <input type="text" placeholder="C.C. công dân" required=""/>
-                        <FaAddressCard className='icon3'/>
-                        <select required>
+
+                    {/* <div className='inputBox2'>
+                        <input type="text" placeholder="C.C. công dân" required="" name="idNumber"
+                        onChange={(event) => {setIdNumber(event.target.value);}}/>
+
+                        <select required onChange={(event) => {setRole(event.target.value);}}>
                             <option value="">Lựa chọn</option>
-                            <option value="option1">Mẹ mày</option>
-                            <option value="option2">Béo</option>
-                            <option value="option3">Mẹ mày</option>
-                            <option value="option4">Béo</option>
-                            <option value="option5">Mẹ mày</option>
+                            {
+                                chucVu.map((value, key) => {
+                                    return (
+                                        <option key={key} value={value.MaChucVu}> {value.TenChucVu} </option>
+                                    )
+                                })
+                            }
                         </select>
-                    </div>
+                    </div> */}
                     <div className='register'></div>
-                    <button onClick={handleRegister} type="button">Đăng ký</button>
+                    <button type="submit">Đăng ký</button>
 
                     <div className='register'></div>
                 </form>
