@@ -163,20 +163,20 @@ create table `BAOCAOCONGNO`(
 create table `TAIKHOAN`(
 	MaTK varchar(255) not null primary key,
 	MatKhau varchar(255) not null,
-	MaChucVu INT not null
+	MaChucVu varchar(255) not null
 );
 
 create table `NHANVIEN`(
+    	CCCD varchar(255) not null primary key,
 	MaTK varchar(255) not null,
-	HoTen varchar(255) not null,
-	CCCD varchar(255) not null primary key,
-	SDT varchar(255) not null
+	HoTen varchar(255) not null
 );
 
 create table `CHUCVU`(
-	MaChucVu INT AUTO_INCREMENT primary key,
+	MaChucVu varchar(255) primary key,
 	TenChucVu varchar(255) not null
 );
+
 
 create table `CT_CHUCVU`(
 	MaCTChucVu INT AUTO_INCREMENT primary key,
