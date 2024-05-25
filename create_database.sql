@@ -38,6 +38,7 @@ create table `SANPHAM`(
 	MaSanPham INT AUTO_INCREMENT primary key ,
 	TenSanPham varchar(255) not null,
 	MaLoaiSanPham INT not null,
+	GiaSanPham INT not null,
 	NgaySanXuat date not null,
 	ThoiGianBaoHanh smallINT not null,
 	SoLuongTon smallINT not null, 
