@@ -4,8 +4,26 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Form, Table, Button } from 'react-bootstrap';
 import { data } from './data.js';
 import debounce from 'lodash.debounce';
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const MainMenu = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:3001/Devices", {
+            headers :{
+                accessToken: localStorage.getItem("TruongPhongToken") || localStorage.getItem("NhanVienToken")
+            }
+        })
+        .then((res) => {
+            if (res.data.err){
+                alert("Chưa đăng nhập");
+                navigate(-1)
+            }       
+        })
+    }, [navigate])
     return (
         <body className="wrapper3">
             <div className='header'>THIẾT BỊ</div>
