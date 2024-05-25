@@ -1,5 +1,9 @@
 const mysql = require('mysql2');
 const config = require('../config/config.json');
+const bodyParser = require('body-parser');
+const express = require('express');
+
+express().use(bodyParser.json());
 
 
 const db = mysql.createConnection({
