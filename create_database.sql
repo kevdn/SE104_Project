@@ -30,7 +30,8 @@ create table `NHACUNGCAP`(
 
 create table `LOAISANPHAM`(
 	MaLoaiSanPham INT AUTO_INCREMENT primary key ,
-	TenLoaiSanPham VARCHAR(255) not null
+	TenLoaiSanPham VARCHAR(255) not null,
+	LoiNhuan INT not null
 );
 
 
