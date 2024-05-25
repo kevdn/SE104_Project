@@ -2,6 +2,8 @@
     width: 1200px;
     position: fixed;
     top: 150px;
+    left: 50%;  /* Add this */
+    transform: translateX(-50%);  /* And this */
 }
 
 .serviceWrapper h1 {

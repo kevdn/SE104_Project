@@ -8,20 +8,20 @@ import { useNavigate} from 'react-router-dom';
 
 const MainMenu = () => {
 
-    const navigate = useNavigate()
-    useEffect(() => {
-        axios.get("http://localhost:3001/BanHang", {
-            headers :{
-                accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
-            }
-        })
-        .then((res) => {
-            if (res.data.err){
-                alert(res.data.err);
-                navigate("/")
-            }       
-        })
-    }, [navigate])
+    // const navigate = useNavigate()
+    // useEffect(() => {
+    //     axios.get("http://localhost:3001/BanHang", {
+    //         headers :{
+    //             accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
+    //         }
+    //     })
+    //     .then((res) => {
+    //         if (res.data.err){
+    //             alert(res.data.err);
+    //             navigate("/")
+    //         }       
+    //     })
+    // }, [navigate])
 
     return (
         <body className="wrapper3">
@@ -35,7 +35,7 @@ const MainMenu = () => {
 
 const Content = () => {
     const [selectedNumber, setSelectedNumber] = useState(1);
-
+    
     const handleSelectChange = (event) => {
         setSelectedNumber(Number(event.target.value));
     };
