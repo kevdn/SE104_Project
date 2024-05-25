@@ -3,8 +3,25 @@ import "./MainMenu.css";
 import MenuFunction from './MenuFunction';
 import './Services.css'
 import { useState } from 'react';
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const MainMenu = () => {
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:3001/SuaChua", {
+            headers :{
+                accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
+            }
+        })
+        .then((res) => {
+            if (res.data.err){
+                alert("Chưa đăng nhập");
+                navigate(-1)
+            }       
+        })
+    }, [navigate])
 
     return (
         <body className="wrapper3">
