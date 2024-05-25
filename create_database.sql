@@ -160,20 +160,16 @@ create table `BAOCAOCONGNO`(
 );
 
 create table `TAIKHOAN`(
-	MaTK INT AUTO_INCREMENT primary key,
-	TenTK varchar(255) not null,
+	MaTK varchar(255) not null primary key,
 	MatKhau varchar(255) not null,
 	MaChucVu INT not null
 );
 
 create table `NHANVIEN`(
-	MaNhanVien INT AUTO_INCREMENT primary key,
-	MaTK INT not null,
+	MaTK varchar(255) not null,
 	HoTen varchar(255) not null,
-	NgaySinh date not null, 
-	CCCD varchar(255) not null,
-	SDT varchar(255) not null,
-	DiaChi varchar(255) not null
+	CCCD varchar(255) not null primary key,
+	SDT varchar(255) not null
 );
 
 create table `CHUCVU`(
