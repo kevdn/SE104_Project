@@ -4,8 +4,27 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Form, Table, Button } from 'react-bootstrap';
 import { customerData } from './customerdata.js';
 import debounce from 'lodash.debounce';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const MainMenu = () => {
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        axios.get("http://localhost:3001/Customers", {
+            headers :{
+                accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
+            }
+        })
+        .then((res) => {
+            if (res.data.err){
+                alert("Chưa đăng nhập");
+                navigate(-1)
+            }       
+        })
+    }, [navigate])
+
     return (
         <body className="wrapper3">
             <div className='header'>Tra cứu khách hàng</div>
