@@ -31,7 +31,7 @@ create table `NHACUNGCAP`(
 
 create table `LOAISANPHAM`(
 	MaLoaiSanPham INT AUTO_INCREMENT primary key ,
-	TenLoaiSanPham INT not null
+	TenLoaiSanPham VARCHAR(255) not null
 );
 
 
@@ -120,6 +120,7 @@ create table `CT_PSC`(
 
 create table `LOAITIENCONG`(
 	MaTienCong INT AUTO_INCREMENT primary key,
+	TenTienCong varchar(255) not null,
 	SoLuong INT not null
 );
 
@@ -248,8 +249,3 @@ add foreign key (MaTK) references TAIKHOAN(MaTK);
 alter table CT_CHUCVU
 add	foreign key (MaChucVu) references CHUCVU(MaChucVu),
 add foreign key (MaQuyen) references QUYEN(MaQuyen);
-
-
-
-
-
