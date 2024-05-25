@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../middlewares/db');
+const {validateTokenNV} = require('../middlewares/AuthNhanVienMiddleware')
+const {validateTokenTP} = require('../middlewares/AuthTruongPhongMiddleware')
+
+router.get('/NhapHang', (validateTokenNV || validateTokenTP), (req, res) => {
+    return res.json("Valid");
+})
 
 
 const checkProvider = async (provider) => {
-  const query = `SELECT * FROM NHACUNGCAP WHERE  TenNhaCungCap = '${provider}'`;
+  const query = `SELECT * FROM NHACUNGCAP WHERE TenNhaCungCap = '${provider}'`;
   const [rows] = await db.promise().query(query);
   return rows.length > 0;
 };
