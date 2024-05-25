@@ -1,0 +1,70 @@
+/* BaoCaoThang.css */
+@import "./MainMenu.css";
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menu .ant-btn {
+    margin: 0 10px;
+}
+
+.Content {
+    margin-top: 90px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.Content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.date-picker-container .ant-picker {
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #e0e0e0;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .Content {
+        padding: 10px;
+    }
+}
