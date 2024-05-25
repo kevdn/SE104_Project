@@ -25,12 +25,14 @@ const Login = () => {
     event.preventDefault();
     axios.post('http://localhost:3001/login', {username, password})
     .then(res => {
-        if (res.data === "Success"){
-            navigate("/MainMenu");
+        if (res.data.err){
+            alert(res.data.err);
         }
         else {
-            alert("Sai tên đăng nhập hoặc mật khẩu");
+            if (res.data.role === "1") localStorage.setItem("TruongPhongToken", res.data.token);
+            else if (res.data.role === "2") localStorage.setItem("NhanVienToken", res.data.token);    
         }
+        navigate("/MainMenu");
         
     })
     .catch(err => console.log(err))
@@ -44,7 +46,6 @@ const Login = () => {
                     <div className='inputBox'>
                         <input type="text" placeholder="Số điện thoại" name='username'
                         onChange={(event) => {setUsername(event.target.value);}}/>
-                        {/* {errors.tel && <span className="text-danger"> {errors.tel}</span>} */}
                         <FaUser className='icon'/>
                     </div>
                     <div className='inputBox'>
