@@ -40,11 +40,19 @@ const MainMenu = () => {
 
   const fetchReportData = async () => {
     // Placeholder for actual API call
-    const response = await fetch(
-      `/api/getReportData?month=${selectedMonth}&year=${selectedYear}`
-    );
-    const data = await response.json();
-    setReportData(data);
+    try {
+      const response = await fetch(
+        `http://localhost:3001/BaoCaoCongNoThang?month=${selectedMonth}&year=${selectedYear}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data)
+      setReportData(data);
+    } catch (error) {
+      console.error('Failed to fetch report data:', error);
+    }
   };
 
   return (
@@ -111,9 +119,7 @@ const Content = ({
           <tr>
             <th>STT</th>
             <th>Nhà cung cấp</th>
-            <th>Nợ đầu</th>
-            <th>Phát sinh</th>
-            <th>Nợ cuối</th>
+            <th>Còn Nợ</th>
           </tr>
         </thead>
         <tbody>
