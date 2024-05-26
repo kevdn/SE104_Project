@@ -24,3 +24,22 @@ insert into `QUYEN` values (1, 'Them');
 insert into `QUYEN` values (2, 'Sua');
 insert into `QUYEN` values (3, 'Xoa');
 insert into `QUYEN` values (4, 'Xem');
+
+
+insert into `NHACUNGCAP` values ('1', 'HaNoi', 'HN', 60, 10);
+insert into `NHACUNGCAP` values ('2', 'DN', 'DaNang', 100, 30);
+insert into `NHACUNGCAP` values ('3', 'HCM', 'SaiGon', 150, 0);
+
+
+insert into `PHIEUNHAPHANG` values ('1', 1, '2021/01/20', 10, 60);
+insert into `PHIEUNHAPHANG` values ('2', 2, '2021/1/2', 20, 90);
+insert into `PHIEUNHAPHANG` values ('3', 3, '2021/1/3', 300, 450);
+
+insert into `SANPHAM` values ('1', 'guitar', 1, 100, '2022/03/12', 5, 10, 50);
+insert into `SANPHAM` values ('2', 'fridge', 2, 90, '2022/2/18', 5, 10, 50);
+insert into `SANPHAM` values ('3', 'chair', 3, 70, '2022/03/02', 5, 10, 50);
+
+insert into `CT_PNH` values ('1', 1, 1, 5, 40, 30);
+insert into `CT_PNH` values ('2', 2, 2, 6, 10, 50);
+insert into `CT_PNH` values ('3', 3, 3, 7, 30, 20);
+
