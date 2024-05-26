@@ -7,3 +7,5 @@ const {validateTokenTP} = require('../middlewares/AuthTruongPhongMiddleware')
 router.get('/BanHang', (validateTokenNV || validateTokenTP), async (req, res) => {
     return res.json("Valid");
 })
+
+module.exports = router;
