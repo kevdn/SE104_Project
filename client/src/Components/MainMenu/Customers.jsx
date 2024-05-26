@@ -1,9 +1,7 @@
 import "./Devices.css";
 import MenuFunction from './MenuFunction';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Container, Form, Table, Button } from 'react-bootstrap';
-import { customerData } from './customerdata.js';
-import debounce from 'lodash.debounce';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -35,55 +33,42 @@ const MainMenu = () => {
 }
 
 const SearchBar = () => {
-    const [customerName, setCustomerName] = useState('');
-    const [customerEmail, setCustomerEmail] = useState('');
     const [customerPhone, setCustomerPhone] = useState('');
-    const [customerAddress, setCustomerAddress] = useState('');
-    const [searchResults, setSearchResults] = useState(customerData);
-
-    const handleSearch = useCallback(debounce(() => {
-        const filteredResults = customerData.filter(customer => {
-            return (
-                (customerName === '' || customer.name.toLowerCase().includes(customerName.toLowerCase())) &&
-                (customerEmail === '' || customer.email.toLowerCase().includes(customerEmail.toLowerCase())) &&
-                (customerPhone === '' || customer.phone.includes(customerPhone)) &&
-                (customerAddress === '' || customer.address.toLowerCase().includes(customerAddress.toLowerCase()))
-            );
-        });
-        setSearchResults(filteredResults);
-    }, 300), [customerName, customerEmail, customerPhone, customerAddress]);
+    const [data, setData] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        handleSearch();
-        return handleSearch.cancel;
-    }, [customerName, customerEmail, customerPhone, customerAddress, handleSearch]);
+        axios.get("http://localhost:3001/getCustomers")
+        .then(res => {
+            const dataArray = Array.isArray(res.data) ? res.data : [];
+            console.log(dataArray);
+            setData(dataArray);
+            setSearchResults(dataArray);
+        })
+    }, [])
+
+    function handleClick(event){
+        event.preventDefault();
+        if (customerPhone === ''){
+            setSearchResults(data);
+            return;
+        }
+        axios.get("http://localhost:3001/findCustomers", {params: {customerPhone: customerPhone}})
+        .then(res => {
+            const dataArray = Array.isArray(res.data) ? res.data : [];
+            console.log(dataArray);
+            setSearchResults(dataArray);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
 
     return (
         <div className='search-bar'>
             <Container>
-                <Form className="FormContainer">
-                    <div className="CustomerName">
-                        <Form.Group controlId="customerName">
-                            <Form.Label>Tên Khách Hàng</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Nhập tên khách hàng"
-                                value={customerName}
-                                onChange={event => setCustomerName(event.target.value)}
-                            />
-                        </Form.Group>
-                    </div>
-                    <div className="CustomerEmail">
-                        <Form.Group controlId="customerEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="Nhập email"
-                                value={customerEmail}
-                                onChange={event => setCustomerEmail(event.target.value)}
-                            />
-                        </Form.Group>
-                    </div>
+                <Form className="FormContainer" onClick={handleClick}>
                     <div className="CustomerPhone">
                         <Form.Group controlId="customerPhone">
                             <Form.Label>Số Điện Thoại</Form.Label>
@@ -93,40 +78,42 @@ const SearchBar = () => {
                                 value={customerPhone}
                                 onChange={event => setCustomerPhone(event.target.value)}
                             />
+                            <Button 
+                            variant="primary" 
+
+                            style={{
+                                backgroundColor: '#9B4A47',
+                                borderColor: '#9B4A47',
+                                padding: '10px 20px',
+                                fontSize: '16px',
+                                borderRadius: '5px',
+                                margin: '20px'
+                            }}
+                        >
+                            Tìm kiếm
+                        </Button>
                         </Form.Group>
-                    </div>
-                    <div className="CustomerAddress">
-                        <Form.Group controlId="customerAddress">
-                            <Form.Label>Địa Chỉ</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Nhập địa chỉ"
-                                value={customerAddress}
-                                onChange={event => setCustomerAddress(event.target.value)}
-                            />
-                        </Form.Group>
-                    </div>
-                    
+                    </div>         
                 </Form>
                 <div className="table-container">
                     <Table striped bordered hover>
                         <thead>
                             <tr>
+                                <th>Mã Khách Hàng</th>
                                 <th>Tên Khách Hàng</th>
-                                <th>Email</th>
+                                <th>Loại khách hàng</th>
                                 <th>Số Điện Thoại</th>
-                                <th>Địa Chỉ</th>
-                                <th>Tình Trạng</th>
+                                <th>Số đơn mua</th>
                             </tr>
                         </thead>
                         <tbody>
                             {searchResults.map((customer, index) => (
                                 <tr key={index}>
-                                    <td>{customer.name}</td>
-                                    <td>{customer.email}</td>
-                                    <td>{customer.phone}</td>
-                                    <td>{customer.address}</td>
-                                    <td>{customer.status}</td>
+                                    <td>{customer.MaKhachHang}</td>
+                                    <td>{customer.TenKhachHang}</td>
+                                    <td>{customer.TenLoaiKhachHang}</td>
+                                    <td>{customer.SDT}</td>
+                                    <td>{customer.SoDonMua}</td>
                                 </tr>
                             ))}
                         </tbody>
