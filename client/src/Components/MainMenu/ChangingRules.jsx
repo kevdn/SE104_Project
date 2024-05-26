@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const MainMenu = () => {
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get("http://localhost:3001/BaoCaoThang", {
+        axios.get("http://localhost:3001/ChangingRules", {
             headers :{
                 accessToken: localStorage.getItem("TruongPhongToken")
             }
@@ -34,10 +34,39 @@ const MainMenu = () => {
 
 const Content = () => {
     const [selectedOption, setSelectedOption] = useState('1');
+    const [wayToPay, setWayToPay] = useState("");
+    const [productType, setProductType] = useState("");
 
     const handleSelectChange = (event) => {
       setSelectedOption(event.target.value);
     };
+
+
+    const handleThemHinhThuc = () => {
+        axios.post('http://localhost:3001/ChangingWayToPay', {wayToPay})
+        .then((res) => {
+            if (res.data.success){
+                setWayToPay("");
+                alert("Thêm hình thức thanh toán thành công");
+            }
+            else {
+                alert(res.data.err);
+            }
+        })
+    }
+
+    const handleNhapSanPham = () => {
+        axios.post('http://localhost:3001/ChangingProductType', {productType})
+        .then((res) => {
+            if (res.data.success){
+                setProductType("");
+                alert("Thêm loại sản phẩm thành công");
+            }
+            else {
+                alert(res.data.err);
+            }
+        })
+    }
 
     return (
         <div className='Content'>
@@ -48,75 +77,28 @@ const Content = () => {
                     <div className='ruleChoice'>
                         <p>Chọn quy định muốn thay đổi:</p>
                         <select onChange={handleSelectChange}>
-                            <option value="1">Thay đổi loại tiền công</option>
-                            <option value="2">Thay đổi loại sản phẩm</option>
-                            <option value="3">Thay đổi hình thức thanh toán</option>
+                            <option value="1">Thay đổi loại sản phẩm</option>
+                            <option value="2">Thay đổi hình thức thanh toán</option>
                         </select>
                     </div>
                     <div className='register'></div>
 
-
-                    { selectedOption == 1 && (<div className="tienCong">
-                        <div>
-                            <p>Thêm loại tiền công: </p>
-                            <input type="text" placeholder="Nhập loại tiền công mới" required=""/>
-                            <button className="ruleButton" type="submit">Thêm</button>
-                        </div>
-                        <div>
-                            <p>Xóa loại tiền công: </p>
-                            <select>
-                                <option value="1">Chọn loại tiền công muốn xóa</option>
-                                <option value="2">1</option>
-                                <option value="3">2</option>
-                                <option value="4">3</option>
-                                <option value="5">4</option>
-                                <option value="6">5</option>
-                                <option value="7">6</option>
-                                <option value="8">7</option>
-                                <option value="9">8</option>
-                                <option value="10">9</option>
-                                <option value="11">10</option>
-                            </select>
-                            <button className="ruleButton" type="submit">Xóa</button>
-                        </div>
-                    </div>
-                    )}
-
-
-                    { selectedOption == 2 && (<div className="sanPham">
+                    { selectedOption == 1 && (<div className="sanPham">
                         <div>
                             <p>Thêm loại sản phẩm: </p>
-                            <input type="text" placeholder="Nhập loại sản phẩm mới" required=""/>
-                            <button className="ruleButton" type="submit">Thêm</button>
-                        </div>
-                        <div>
-                            <p>Xóa loại sản phẩm: </p>
-                            <select>
-                                <option value="1">Chọn loại sản phẩm muốn xóa</option>
-                                <option value="2">1</option>
-                                <option value="3">2</option>
-                                <option value="4">3</option>
-                            </select>
-                            <button className="ruleButton" type="submit">Xóa</button>
+                            <input type="text" placeholder="Nhập loại sản phẩm mới" required="" name="productType"
+                            onChange={(event) => {setProductType(event.target.value)}}/>
+                            <button className="ruleButton" type="submit" onClick={handleNhapSanPham}>Thêm</button>
                         </div>
                     </div>
                     )}
 
-                    { selectedOption == 3 && (<div className="hinhThuc">
+                    { selectedOption == 2 && (<div className="hinhThuc">
                         <div>
                             <p>Thêm hình thức thanh toán: </p>
-                            <input type="text" placeholder="Nhập loại hình thức thanh toán mới" required=""/>
-                            <button className="ruleButton" type="submit">Thêm</button>
-                        </div>
-                        <div>
-                            <p>Xóa hình thức thanh toán: </p>
-                            <select>
-                                <option value="1">Chọn hình thức thanh toán muốn xóa</option>
-                                <option value="2">1</option>
-                                <option value="3">2</option>
-                                <option value="4">3</option>
-                            </select>
-                            <button className="ruleButton" type="submit">Xóa</button>
+                            <input type="text" placeholder="Nhập loại hình thức thanh toán mới" required="" name="wayToPay"
+                            onChange={(event) => {setWayToPay(event.target.value)}}/>
+                            <button className="ruleButton" type="submit" onClick={handleThemHinhThuc}>Thêm</button>
                         </div>
                     </div>
                     )}
