@@ -45,6 +45,9 @@ app.use('/', nhapHangRouter);
 const traHangRouter = require('./routes/TraHang');
 app.use('/', traHangRouter);
 
+const thanhToanRouter = require('./routes/ThanhToan');
+app.use('/', thanhToanRouter);
+
 app.listen(3001, () => {
     console.log('Server is running on port 3001');
 }
