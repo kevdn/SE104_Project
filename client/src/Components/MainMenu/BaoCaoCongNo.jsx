@@ -127,10 +127,9 @@ const Content = ({
             reportData.map((row, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{row.supplier}</td>
-                <td>{row.openingDebt}</td>
-                <td>{row.incurred}</td>
-                <td>{row.endingDebt}</td>
+                <td>{row.TenNhaCungCap}</td>
+                <td>{row.ConNo}</td>
+      
               </tr>
             ))
           ) : (
