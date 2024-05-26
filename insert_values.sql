@@ -43,3 +43,14 @@ insert into `CT_PNH` values ('1', 1, 1, 5, 40, 30);
 insert into `CT_PNH` values ('2', 2, 2, 6, 10, 50);
 insert into `CT_PNH` values ('3', 3, 3, 7, 30, 20);
 
+insert into `KHACHHANG` values (1, 'Truong Quoc Khanh', 1, '0789473607');
+insert into `KHACHHANG` values (2, 'Le Huu Khoa', 2, '1234567890');
+insert into `KHACHHANG` values (3, 'Lau Truong Minh', 1, '1472589603');
+insert into `KHACHHANG` values (4, 'Huynh Ngoc Bao Long', 2, '3201456798');  
+
+insert into `PHIEUBANHANG` values (1, 1, "2024/03/12", 1, '123', 10, 6000000);
+insert into `PHIEUBANHANG` values (2, 1, "2024/03/12", 2, '123', 10, 7000000);
+insert into `PHIEUBANHANG` values (3, 1, "2024/03/12", 3, '123', 10, 10000000);
+insert into `PHIEUBANHANG` values (4, 2, "2024/03/12", 1, '123', 0, 4000000);
+insert into `PHIEUBANHANG` values (5, 4, "2024/03/12", 3, '123', 10, 8000000);
+insert into `PHIEUBANHANG` values (6, 3, "2024/03/12", 1, '123', 10, 9000000);
