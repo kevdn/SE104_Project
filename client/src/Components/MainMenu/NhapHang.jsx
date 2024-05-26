@@ -1,15 +1,13 @@
-import { Menu } from "antd";
 import "./MainMenu.css";
 import MenuFunction from "./MenuFunction";
 import "./Services.css";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
-import { head } from "lodash";
 
 const MainMenu = () => {
-
   const navigate = useNavigate()
+  
     useEffect(() => {
         axios.get("http://localhost:3001/NhapHang", {
             headers :{
@@ -24,19 +22,17 @@ const MainMenu = () => {
         })
     }, [navigate])
   return (
-    <div className="wrapper3">
+    <body className="wrapper3">
       <div className="header">NHẬP HÀNG</div>
       <MenuFunction />
       <Content />
-    </div>
+    </body>
   );
 };
 
 const calculateTotal = (products) => {
   return products.reduce((total, product) => total + Number(product.total), 0);
 };
-
-
 
 
 const Content = () => {
@@ -47,21 +43,6 @@ const Content = () => {
   const [address, setAddress] = useState("");
   const [advancePayment, setAdvancePayment] = useState(0);
   const [chiPhiPhatSinh, setChiPhiPhatSinh] = useState(0);
-  const [productTypes, setProductTypes] = useState([]);
-  useEffect(() => {
-    axios.get('http://localhost:3001/Devices/typesOfDevices', {
-      headers: {
-        accessToken: localStorage.getItem('NhanVienToken') || localStorage.getItem('TruongPhongToken'),
-      },
-    })
-      .then(response => {
-        setProductTypes(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      });
-  }, []);
-
   const [products, setProducts] = useState([ 
     {
       name: "",
@@ -115,7 +96,7 @@ const Content = () => {
   
       return {
         TenSanPham: product.name,
-        LoaiSanPham: product.typeId,
+        LoaiSanPham: product.type,
         NgaySanXuat: product.productionDate,
         ThoiGianBaoHanh: product.warrantyPeriod,
         SoLuong: product.quantity,
@@ -196,7 +177,7 @@ const Content = () => {
           <div className="dropDown">
             <a>Nhập số lượng sản phẩm:</a>
             <select onChange={handleSelectChange} value={selectedNumber}>
-              {[...Array(8)].map((_, i) => (
+              {[...Array(6)].map((_, i) => (
                 <option key={i} value={i + 1}>
                   {i + 1}
                 </option>
@@ -215,6 +196,7 @@ const Content = () => {
                 onChange={(e) => handleInputChange(index, e)}
               />
               <select
+                className="productType"
                 type="text"
                 name="type"
                 placeholder="Loại sản phẩm"
@@ -222,9 +204,9 @@ const Content = () => {
                 value={product.type}
                 onChange={(e) => handleInputChange(index, e)}
               >
-                {productTypes.map((type, index) => (
-                  <option key={index} value={type.MaLoaiSanPham}>{type.TenLoaiSanPham}</option>
-                ))}
+                <option value="Laptop">Laptop</option>
+                <option value="Dien thoai">Dien thoai</option>
+                <option value="May tinh bang">May tinh bang</option>
               </select>
               <input
                 type="text"
@@ -294,7 +276,7 @@ const Content = () => {
               <label>Tong tien:</label>
               <input
                 type="number"
-                name="Tong Tien "
+                name="Tong Tien"
                 required
                 value={products.reduce((total, product) => total + Number(product.total), 0) - advancePayment + chiPhiPhatSinh}
                 readOnly
