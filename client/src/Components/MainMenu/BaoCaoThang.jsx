@@ -40,11 +40,19 @@ const MainMenu = () => {
 
   const fetchReportData = async () => {
     // Placeholder for actual API call
-    const response = await fetch(
-      `/api/getReportData?month=${selectedMonth}&year=${selectedYear}`
-    );
-    const data = await response.json();
-    setReportData(data);
+    try {
+      const response = await fetch(
+        `http://localhost:3001/BaoCaoXuHuongThang?month=${selectedMonth}&year=${selectedYear}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data)
+      setReportData(data);
+    } catch (error) {
+      console.error('Failed to fetch report data:', error);
+    }
   };
 
   return (
@@ -112,10 +120,6 @@ const Content = ({
             <th>STT</th>
             <th>Loại Sản phẩm</th>
             <th>Số lượt mua</th>
-            <th>Số lượt bảo hành</th>
-            <th>Số lượt sửa chữa</th>
-            <th>Thành tiền</th>
-            <th>Tỉ lệ</th>
           </tr>
         </thead>
         <tbody>
@@ -123,12 +127,8 @@ const Content = ({
             reportData.map((row, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{row.productType}</td> {/* Adjusted */}
-                <td>{row.purchaseCount}</td> {/* Adjusted */}
-                <td>{row.warrantyCount}</td> {/* Adjusted */}
-                <td>{row.repairCount}</td> {/* Adjusted */}
-                <td>{row.total}</td> {/* Adjusted */}
-                <td>{row.ratio}</td> {/* Adjusted */}
+                <td>{row.TenLoaiSanPham}</td> {/* Adjusted */}
+                <td>{row.SoLuotMua}</td> {/* Adjusted */}
               </tr>
             ))
           ) : (
