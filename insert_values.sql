@@ -54,3 +54,11 @@ insert into `PHIEUBANHANG` values (3, 1, "2024/03/12", 3, '123', 10, 10000000);
 insert into `PHIEUBANHANG` values (4, 2, "2024/03/12", 1, '123', 0, 4000000);
 insert into `PHIEUBANHANG` values (5, 4, "2024/03/12", 3, '123', 10, 8000000);
 insert into `PHIEUBANHANG` values (6, 3, "2024/03/12", 1, '123', 10, 9000000);
+
+insert into `CT_PBH` values (1, 1, 2, 10, 10000, 11000);
+insert into `CT_PBH` values (2, 1, 1, 3, 15000, 130000);
+insert into `CT_PBH` values (3, 4, 3, 6, 19000, 12000);
+insert into `CT_PBH` values (4, 2, 1, 9, 13000, 101000);
+insert into `CT_PBH` values (5, 3, 1, 13, 20000, 15000);
+insert into `CT_PBH` values (6, 4, 2, 11, 60000, 10050);
+insert into `CT_PBH` values (7, 1, 3, 2, 10000, 10000);
