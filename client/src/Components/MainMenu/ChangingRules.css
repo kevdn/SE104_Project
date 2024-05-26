@@ -1,0 +1,190 @@
+.ruleChoice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ruleChoice select {
+    width: 23%;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    color: black;
+    padding-left: 5px;
+    background-color: #f2f2f2;
+}
+
+.ruleChoice p {
+    padding-right: 10px;
+}
+
+.tienCong div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    justify-content: center;
+}
+
+.tienCong .ruleButton {
+    width: 20%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #d4605c;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 40px;
+    color: white;
+}
+
+.tienCong .ruleButton:hover {
+    background: #9B4A47;
+}
+
+.tienCong p {
+    margin-right: 15px;
+}
+
+.tienCong input {
+    width: 20%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding: 20px 20px 20px 20px;
+    color: black;
+    background-color: #f2f2f2;
+    margin-right: 15px;
+}
+
+.tienCong select {
+    margin-right: 15px;
+    width: 24%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding-left: 20px;
+    color: black;
+    background-color: #f2f2f2;
+}
+
+.sanPham div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    justify-content: center;
+}
+
+.sanPham .ruleButton {
+    width: 20%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #d4605c;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 40px;
+    color: white;
+}
+
+.sanPham .ruleButton:hover {
+    background: #9B4A47;
+}
+
+.sanPham p {
+    margin-right: 15px;
+}
+
+.sanPham input {
+    width: 20%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding: 20px 20px 20px 20px;
+    color: black;
+    background-color: #f2f2f2;
+    margin-right: 15px;
+}
+
+.sanPham select {
+    margin-right: 15px;
+    width: 24%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding-left: 20px;
+    color: black;
+    background-color: #f2f2f2;
+}
+
+.hinhThuc div {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    justify-content: center;
+}
+
+.hinhThuc .ruleButton {
+    width: 20%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #d4605c;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 40px;
+    color: white;
+}
+
+.hinhThuc .ruleButton:hover {
+    background: #9B4A47;
+}
+
+.hinhThuc p {
+    margin-right: 15px;
+}
+
+.hinhThuc input {
+    width: 23%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding: 20px 20px 20px 20px;
+    color: black;
+    background-color: #f2f2f2;
+    margin-right: 15px;
+}
+
+.hinhThuc select {
+    margin-right: 15px;
+    width: 27%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(30, 3, 3, 0.2);
+    border-radius: 40px;
+    padding-left: 20px;
+    color: black;
+    background-color: #f2f2f2;
+}

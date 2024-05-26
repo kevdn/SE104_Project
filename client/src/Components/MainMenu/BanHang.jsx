@@ -191,7 +191,7 @@ const Content = () => {
                     <div className='dropDown'>
                         <a>Nhập số lượng sản phẩm:</a>
                         <select onChange={handleSelectChange} value={selectedNumber}>
-                            {[...Array(7)].map((_, i) => (
+                            {[...Array(6)].map((_, i) => (
                                 <option key={i} value={i + 1}>
                                     {i + 1}
                                 </option>
