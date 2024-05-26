@@ -37,15 +37,27 @@ const SearchBar = () => {
     const [data, setData] = useState([]);
 
     const [searchResults, setSearchResults] = useState([]);
-  
-    function handleClick(event){
-        event.preventDefault();
-        console.log(productType);
-        axios.get("http://localhost:3001/findDevices", {params: {productType: productType}})
+    
+    useEffect(() => {
+        axios.get("http://localhost:3001/getDevices")
         .then(res => {
             const dataArray = Array.isArray(res.data) ? res.data : [];
             console.log(dataArray);
             setData(dataArray);
+            setSearchResults(dataArray);
+        }
+        )
+        }, [])
+
+    function handleClick(event){
+        if (productType === ''){
+            setSearchResults(data);
+            return;
+        }
+        axios.get("http://localhost:3001/findDevices", {params: {productType: productType}})
+        .then(res => {
+            const dataArray = Array.isArray(res.data) ? res.data : [];
+            console.log(dataArray);
             setSearchResults(dataArray);
         })
         .catch(err => {
