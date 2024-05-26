@@ -180,7 +180,7 @@ create table `CHUCVU`(
 
 create table `CT_CHUCVU`(
 	MaCTChucVu INT AUTO_INCREMENT primary key,
-	MaChucVu INT not null,
+	MaChucVu varchar(255) not null,
 	MaQuyen INT not null,
 	DuocPhep BIT not null
 );
