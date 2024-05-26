@@ -7,14 +7,14 @@ import { useState, useEffect } from "react";
 const Register = () => {
     const navigate = useNavigate();
     
-    // const [chucVu, setChucVu] = ([]);
-    // useEffect(() => {
-    //     axios.get("http://localhost:3001/register")
-    //         .then(res => {
-    //             setChucVu(res.data);
-    //         })
-    //         .catch(err => console.log("Error in getting data"));
-    // }, []);
+    const [chucVu, setChucVu] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:3001/register")
+            .then(res => {
+                setChucVu(res.data);
+            })
+            .catch(err => console.log("Error in getting data"));
+    }, []);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -55,26 +55,16 @@ const Register = () => {
                     </div>
                     
                     <div className='inputBox'>
-                        <input type="text" placeholder="Căn cước công dân" required=""name="idNumber"
-                        onChange={(event) => {setIdNumber(event.target.value);}}/>
-                        <FaUser className='icon'/>
-                    </div>
-
-                    <div className='inputBox'>
                         <input type="text" placeholder="Họ và tên" required=""name="name"
                         onChange={(event) => {setName(event.target.value);}}/>
                         <FaUser className='icon'/>
                     </div>
-                    <div className='inputBox'>
-                        <input type="text" placeholder="Mã chức vụ" required="" name="role"
-                        onChange={(event) => {setRole(event.target.value);}}/>
-                    </div>
 
-                    {/* <div className='inputBox2'>
+                    <div className='inputBox2'>
                         <input type="text" placeholder="C.C. công dân" required="" name="idNumber"
                         onChange={(event) => {setIdNumber(event.target.value);}}/>
 
-                        <select required onChange={(event) => {setRole(event.target.value);}}>
+                        <select name ="role" required onChange={(event) => {setRole(event.target.value);}}>
                             <option value="">Lựa chọn</option>
                             {
                                 chucVu.map((value, key) => {
@@ -84,7 +74,7 @@ const Register = () => {
                                 })
                             }
                         </select>
-                    </div> */}
+                    </div>
                     <div className='register'></div>
                     <button type="submit">Đăng ký</button>
 
