@@ -1,28 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const mysql = require('mysql2/promise'); // Use the promise-compatible version
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    database: 'QLCHTBDT'
-});
+const db = require('../middlewares/db');
+const checkUsername = async (username) => {
+    const sql = SELECT * FROM TAIKHOAN WHERE MaTK = '${username}';
+    const [rows] = await db.promise().query(sql);
+    return rows.length > 0;
+}
+
+const checkIdNumber = async (idNumber) => {
+    const sql = SELECT * FROM NHANVIEN WHERE CCCD = '${idNumber}';
+    const [rows] = await db.promise().query(sql);
+    return rows.length > 0;
+}
 
 router.post("/register", async (req, res) => {
     const { idNumber, username, password, name, role } = req.body;
-    try {
+
+    await db.connect();
+
         const hash = await bcrypt.hash(password, 10);
-        const sqlAddAccount = "INSERT INTO TAIKHOAN VALUES (?, ?, ?)";
-        await db.query(sqlAddAccount, [username, hash, role]);
-        const sqlAddEmployee = "INSERT INTO NHANVIEN VALUES (?, ?, ?)";
-        await db.query(sqlAddEmployee, [idNumber, username, name]);
-        console.log("Thêm thông tin nhân viên thành công");
-        res.json("Register success");
-    } catch (error) {
-        console.error("Error:", error);
-        res.json("Failed");
-    }
+        const userNameExists = await checkUsername(username);
+        const idNumberExists = await checkIdNumber(idNumber);
+        if (userNameExists || idNumberExists){
+            console.log(userNameExists);
+            console.log("Username exists");
+            res.json("Username exists");
+        }
+        else {
+            const sql = "INSERT INTO TAIKHOAN (MaTK, MatKhau, MaChucVu) VALUES (?, ?, ?)";
+            await db.promise().query(sql, [username, hash, role]);
+            const sql2 = "INSERT INTO NHANVIEN (CCCD, MaTK, HoTen) VALUES (?, ?, ?)";
+            await db.promise().query(sql2, [idNumber, username, name]);
+            console.log("Register success");
+            res.json("Register success");
+        }
+
+    await db.close();
 });
 
 router.get("/register", async (req, res) => {
