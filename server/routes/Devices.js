@@ -24,7 +24,6 @@ router.get('/getDevices', (req, res) =>{
 })
 
 const getDevices = async (productType) => {
-    console.log(productType)
     const sql = `SELECT SANPHAM.TenSanPham, SANPHAM.MaLoaiSanPham, SANPHAM.GiaSanPham, NHACUNGCAP.TenNhaCungCap, SANPHAM.SoLuongTon, SANPHAM.SoLuongBan FROM SANPHAM, NHACUNGCAP, CT_PNH, PHIEUNHAPHANG WHERE SANPHAM.MaSanPham = CT_PNH.MaSanPham AND CT_PNH.MaPhieuNhap = PHIEUNHAPHANG.MaPhieuNhap AND PHIEUNHAPHANG.MaNhaCungCap = NHACUNGCAP.MaNhaCungCap AND SANPHAM.MaLoaiSanPham = '${productType}'`;
     const [result] = await db.promise().query(sql);
     return result;
