@@ -34,7 +34,6 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
-    margin-top: 20px;
 }
 
 .table {
@@ -87,18 +86,11 @@
     justify-content: space-between; /* Các div sẽ được căn chỉnh cách đều nhau trên hàng */
 }
 
-.TenSP,
-.LoaiSP,
-.NCC,
-.Tinhtrang {
+
+.LoaiSP
+{
     flex: 1; /* Đảm bảo rằng mỗi div sẽ chiếm đủ không gian trên hàng */
     margin-right: 10px; /* Khoảng cách giữa các div */
 }
 
-/* Đảm bảo các trường nhập liệu/select chiếm toàn bộ chiều rộng của div */
-.TenSP .form-control,
-.LoaiSP .form-control,
-.NCC .form-control,
-.Tinhtrang .form-control {
-    width: 100%;
-}
+

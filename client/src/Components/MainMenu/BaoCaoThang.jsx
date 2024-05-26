@@ -9,22 +9,23 @@ import { useEffect } from "react";
 const { Option } = Select;
 
 const MainMenu = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "Monthly Report";
 
-  const navigate = useNavigate()
-    useEffect(() => {
-        axios.get("http://localhost:3001/BaoCaoThang", {
-            headers :{
-                accessToken: localStorage.getItem("TruongPhongToken")
-            }
-        })
-        .then((res) => {
-            if (res.data.err){
-                alert(res.data.err);
-                navigate(-1)
-            }       
-        })
-    }, [navigate])
-
+    axios
+      .get("http://localhost:3001/BaoCaoThang", {
+        headers: {
+          accessToken: localStorage.getItem("TruongPhongToken"),
+        },
+      })
+      .then((res) => {
+        if (res.data.err) {
+          alert(res.data.err);
+          navigate(-1);
+        }
+      });
+  }, [navigate]);
 
   const [selectedMonth, setSelectedMonth] = useState(moment().month() + 1);
   const [selectedYear, setSelectedYear] = useState(moment().year());
@@ -48,10 +49,10 @@ const MainMenu = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       setReportData(data);
     } catch (error) {
-      console.error('Failed to fetch report data:', error);
+      console.error("Failed to fetch report data:", error);
     }
   };
 

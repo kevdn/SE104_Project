@@ -1,27 +1,31 @@
 import "./MainMenu.css";
 import MenuFunction from "./MenuFunction";
-import "./Services.css"
+import "./Services.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const MainMenu = () => {
-  const navigate = useNavigate()
-  
-    useEffect(() => {
-        axios.get("http://localhost:3001/NhapHang", {
-            headers :{
-                accessToken: localStorage.getItem("NhanVienToken") ||localStorage.getItem("TruongPhongToken")
-            }
-        })
-        .then((res) => {
-            if (res.data.err){
-                alert("Chưa đăng nhập");
-                navigate(-1)
-            }       
-        })
-    }, [navigate])
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Import Products";
+
+    axios
+      .get("http://localhost:3001/NhapHang", {
+        headers: {
+          accessToken:
+            localStorage.getItem("NhanVienToken") ||
+            localStorage.getItem("TruongPhongToken"),
+        },
+      })
+      .then((res) => {
+        if (res.data.err) {
+          alert("Chưa đăng nhập");
+          navigate(-1);
+        }
+      });
+  }, [navigate]);
   return (
     <body className="wrapper3">
       <div className="header">NHẬP HÀNG</div>
@@ -35,7 +39,6 @@ const calculateTotal = (products) => {
   return products.reduce((total, product) => total + Number(product.total), 0);
 };
 
-
 const Content = () => {
   const [selectedNumber, setSelectedNumber] = useState(1);
   const [provider, setProvider] = useState("");
@@ -44,7 +47,7 @@ const Content = () => {
   const [address, setAddress] = useState("");
   const [advancePayment, setAdvancePayment] = useState(0);
   const [chiPhiPhatSinh, setChiPhiPhatSinh] = useState(0);
-  const [products, setProducts] = useState([ 
+  const [products, setProducts] = useState([
     {
       name: "",
       type: "",
@@ -85,16 +88,16 @@ const Content = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     // Calculate TraTruoc and TongTien for PHIEUNHAPHANG
     const TongTien = calculateTotal(products); // Replace with your actual calculation
     const No = TongTien - advancePayment + chiPhiPhatSinh;
-  
+
     // Prepare the products data
     const productsData = products.map((product) => {
       // Calculate ThanhTien for CT_PNH
       const ThanhTien = product.quantity * product.price;
-  
+
       return {
         TenSanPham: product.name,
         LoaiSanPham: product.type,
@@ -102,10 +105,10 @@ const Content = () => {
         ThoiGianBaoHanh: product.warrantyPeriod,
         SoLuong: product.quantity,
         DonGia: product.price,
-        ThanhTien: ThanhTien
+        ThanhTien: ThanhTien,
       };
     });
-  
+
     const data = {
       TenNhaCungCap: provider,
       NgayNhap: dateProvided,
@@ -114,9 +117,9 @@ const Content = () => {
       DiaChi: address,
       SoDienThoai: phone,
       No: No,
-      products: productsData
+      products: productsData,
     };
-  
+
     axios
       .post("http://localhost:3001/NhapHang", data)
       .then((response) => {
@@ -153,8 +156,12 @@ const Content = () => {
               placeholder="Ngày nhập"
               required
               value={dateProvided}
-              onFocus={(e) => e.target.setAttribute('type', 'date')}
-              onBlur={(e) => e.target.type === 'date' && e.target.value === '' && e.target.setAttribute('type', 'text')}
+              onFocus={(e) => e.target.setAttribute("type", "date")}
+              onBlur={(e) =>
+                e.target.type === "date" &&
+                e.target.value === "" &&
+                e.target.setAttribute("type", "text")
+              }
               onChange={(e) => setDateProvided(e.target.value)}
             />
             <input
@@ -216,8 +223,12 @@ const Content = () => {
                 placeholder="Ngày sản xuất"
                 required
                 value={product.productionDate}
-                onFocus={(e) => e.target.setAttribute('type', 'date')}
-                onBlur={(e) => e.target.type === 'date' && e.target.value === '' && e.target.setAttribute('type', 'text')}
+                onFocus={(e) => e.target.setAttribute("type", "date")}
+                onBlur={(e) =>
+                  e.target.type === "date" &&
+                  e.target.value === "" &&
+                  e.target.setAttribute("type", "text")
+                }
                 onChange={(e) => handleInputChange(index, e)}
               />
               <input
@@ -257,14 +268,14 @@ const Content = () => {
           ))}
           <div className="totalFields">
             <div className="fieldRow">
-                <label>Chi phi phat sinh:</label>
-                <input
-                  type="number"
-                  name="Chi Phi Phat Sinh"
-                  required
-                  onChange={(e) => setChiPhiPhatSinh(Number(e.target.value))}
-                />
-              </div>
+              <label>Chi phi phat sinh:</label>
+              <input
+                type="number"
+                name="Chi Phi Phat Sinh"
+                required
+                onChange={(e) => setChiPhiPhatSinh(Number(e.target.value))}
+              />
+            </div>
             <div className="fieldRow">
               <label>Tra truoc:</label>
               <input
@@ -280,7 +291,14 @@ const Content = () => {
                 type="number"
                 name="Tong Tien"
                 required
-                value={products.reduce((total, product) => total + Number(product.total), 0) - advancePayment + chiPhiPhatSinh}
+                value={
+                  products.reduce(
+                    (total, product) => total + Number(product.total),
+                    0
+                  ) -
+                  advancePayment +
+                  chiPhiPhatSinh
+                }
                 readOnly
               />
             </div>

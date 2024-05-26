@@ -1,29 +1,24 @@
-@import url(MainMenu.css);
-
-
-.FormContainer {
-    display: flex;
-    justify-content: space-between; /* Align divs evenly */
-    flex-wrap: wrap; /* Allow wrapping for better responsiveness */
-}
-
-.CustomerName, .CustomerEmail, .CustomerPhone, .CustomerStatus {
-    flex: 1; /* Ensure each div takes enough space */
-    margin-right: 10px; /* Space between divs */
-    min-width: 200px; /* Ensure minimum width for better responsiveness */
-}
-
-.CustomerName .form-control,
-.CustomerEmail .form-control,
-.CustomerPhone .form-control,
-.CustomerStatus .form-control {
-    width: 100%;
-}
-
 .search-bar {
-    margin: 100px auto 20px;
+    margin-left:auto ;
+    margin-right:auto ;
+    margin-top: 110px;
+    margin-bottom:20px;
     width: 100%; /* Set the width to 100% */
     position: relative; /* Ensure the search results are positioned correctly */
+}
+
+.search-bar input {
+    width: 100%; /* Adjust width to consider padding */
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 20px;
+}
+.search-bar {
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .search-bar .form-control,
@@ -37,7 +32,6 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
-    margin-top: 20px;
 }
 
 .table {
@@ -48,7 +42,8 @@
     border-spacing: 0;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 12px;
     text-align: left;
     vertical-align: middle;
@@ -67,23 +62,29 @@
 .table tbody tr:hover {
     background-color: #f1f1f1;
 }
-
-.search-button-container {
-    text-align: center;
-    margin-top: 20px;
+.filter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Khoảng cách giữa các trường */
 }
 
-.search-button {
-    background-color: #9B4A47;
-    border-color: #9B4A47;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    color: white;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+.filter-block label {
+    font-weight: bold;
 }
 
-.search-button:hover {
-    background-color: #872b29;
-    border-color: #872b29;
+.filter-block .form-control {
+    width: 50%; /* Đảm bảo rằng các trường nhập liệu và select chiếm toàn bộ chiều rộng của block */
+}
+
+.filter-block .form-group {
+    margin-bottom: 15px; /* Khoảng cách dưới của mỗi form group */
+}
+.FormContainer {
+    display: flex;
+    justify-content: space-between; /* Các div sẽ được căn chỉnh cách đều nhau trên hàng */
+}
+.CustomerPhone
+{
+    flex: 1; /* Đảm bảo rằng mỗi div sẽ chiếm đủ không gian trên hàng */
+    margin-right: 10px; /* Khoảng cách giữa các div */
 }
