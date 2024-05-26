@@ -205,6 +205,7 @@ const Content = () => {
                 value={product.type}
                 onChange={(e) => handleInputChange(index, e)}
               >
+                <option value="">Loại sản phẩm</option>
                 <option value="Laptop">Laptop</option>
                 <option value="Dien thoai">Dien thoai</option>
                 <option value="May tinh bang">May tinh bang</option>
