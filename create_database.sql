@@ -52,7 +52,7 @@ create table `PHIEUBANHANG`(
 	NgayBan date not null,
 	MaHTTT INT not null,
 	NhanVienBanHang varchar(255) not null,
-	ChieuKhau float(24) not null,
+	ChietKhau float(24) not null,
 	TongGiaTriHD int not null	
 );
 
@@ -167,7 +167,7 @@ create table `TAIKHOAN`(
 );
 
 create table `NHANVIEN`(
-    	CCCD varchar(255) not null primary key,
+	CCCD varchar(255) not null primary key,
 	MaTK varchar(255) not null,
 	HoTen varchar(255) not null
 );
