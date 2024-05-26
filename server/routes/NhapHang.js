@@ -4,7 +4,7 @@ const db = require('../middlewares/db');
 const {validateTokenNV} = require('../middlewares/AuthNhanVienMiddleware')
 const {validateTokenTP} = require('../middlewares/AuthTruongPhongMiddleware')
 
-router.get('/NhapHang', (validateTokenNV || validateTokenTP), (req, res) => {
+router.get('/NhapHang', (validateTokenNV || validateTokenTP), async (req, res) => {
     return res.json("Valid");
 })
 
@@ -19,7 +19,7 @@ const insertProvider = async (provider, diaChi, SoDienThoai, No) => {
   await db.promise().query(query);
 };
 
-router.post('/NhapHang', async (req, res) => {    
+router.post('/NhapHang', (validateTokenNV || validateTokenTP), async (req, res) => {    
     const data = req.body;
 
     // Connect to the database.
