@@ -11,7 +11,7 @@ insert `LOAIKHACHHANG` values (2, 'Khach hang doanh nghiep');
 
 insert into `HINHTHUCTHANHTOAN` values (1, 'Tien mat');
 insert into `HINHTHUCTHANHTOAN` values (2, 'Chuyen khoan Momo');
-insert into `HINHTHUCTHANHTOAN` values (1, 'Chuyen khoan ngan hang');
+insert into `HINHTHUCTHANHTOAN` values (3, 'Chuyen khoan ngan hang');
 
 insert into `LOAITIENCONG` values (1, 'Tien cong sua chua', 10);
 insert into `LOAITIENCONG` values (2, 'Tien cong bao hanh', 10);
