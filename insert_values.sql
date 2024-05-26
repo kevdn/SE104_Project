@@ -1,16 +1,17 @@
 use `QLCHTBDT`;
 
 insert into `LOAISANPHAM` values (1, 'Laptop', 10);
-insert into `LOAISANPHAM` values (2, 'Dien thoai', 20);
-insert into `LOAISANPHAM` values (3, 'May tinh bang', 30); 
+insert into `LOAISANPHAM` values (2, 'May tinh bang', 20);
+insert into `LOAISANPHAM` values (3, 'Dien thoai', 30); 
 
 
-insert `LOAIKHACHHANG` values (1, 'Khach hang si');
-insert `LOAIKHACHHANG` values (2, 'Khach hang le');
+insert `LOAIKHACHHANG` values (1, 'Khach hang ca nhan');
+insert `LOAIKHACHHANG` values (2, 'Khach hang doanh nghiep');
 
 
 insert into `HINHTHUCTHANHTOAN` values (1, 'Tien mat');
-insert into `HINHTHUCTHANHTOAN` values (2, 'Chuyen khoan');
+insert into `HINHTHUCTHANHTOAN` values (2, 'Chuyen khoan Momo');
+insert into `HINHTHUCTHANHTOAN` values (1, 'Chuyen khoan ngan hang');
 
 insert into `LOAITIENCONG` values (1, 'Tien cong sua chua', 10);
 insert into `LOAITIENCONG` values (2, 'Tien cong bao hanh', 10);
