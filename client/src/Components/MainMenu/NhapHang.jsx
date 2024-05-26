@@ -2,10 +2,10 @@ import { Menu } from "antd";
 import "./MainMenu.css";
 import MenuFunction from "./MenuFunction";
 import "./Services.css";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
-import { head } from "lodash";
+import { useEffect } from "react";
 
 const MainMenu = () => {
 
@@ -47,21 +47,6 @@ const Content = () => {
   const [address, setAddress] = useState("");
   const [advancePayment, setAdvancePayment] = useState(0);
   const [chiPhiPhatSinh, setChiPhiPhatSinh] = useState(0);
-  const [productTypes, setProductTypes] = useState([]);
-  useEffect(() => {
-    axios.get('http://localhost:3001/Devices/typesOfDevices', {
-      headers: {
-        accessToken: localStorage.getItem('NhanVienToken') || localStorage.getItem('TruongPhongToken'),
-      },
-    })
-      .then(response => {
-        setProductTypes(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      });
-  }, []);
-
   const [products, setProducts] = useState([ 
     {
       name: "",
@@ -115,7 +100,7 @@ const Content = () => {
   
       return {
         TenSanPham: product.name,
-        LoaiSanPham: product.typeId,
+        LoaiSanPham: product.type,
         NgaySanXuat: product.productionDate,
         ThoiGianBaoHanh: product.warrantyPeriod,
         SoLuong: product.quantity,
@@ -222,9 +207,9 @@ const Content = () => {
                 value={product.type}
                 onChange={(e) => handleInputChange(index, e)}
               >
-                {productTypes.map((type, index) => (
-                  <option key={index} value={type.MaLoaiSanPham}>{type.TenLoaiSanPham}</option>
-                ))}
+                <option value="Laptop">Laptop</option>
+                <option value="Dien thoai">Dien thoai</option>
+                <option value="May tinh bang">May tinh bang</option>
               </select>
               <input
                 type="text"

@@ -19,7 +19,7 @@ const insertProvider = async (provider, diaChi, SoDienThoai, No) => {
   await db.promise().query(query);
 };
 
-router.post('/NhapHang', (validateTokenNV || validateTokenTP), async (req, res) => {    
+router.post('/NhapHang', async (req, res) => {    
     const data = req.body;
 
     // Connect to the database.
