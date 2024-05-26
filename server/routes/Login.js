@@ -24,11 +24,11 @@ router.post("/login", (req, res) => {
                     }
                     else {
                         if (data[0].MaChucVu === "1"){
-                            const TruongPhongToken = sign({username : data[0].MaTK}, "NhanVien")
+                            const TruongPhongToken = sign({username : data[0].MaTK}, "TruongPhong")
                             res.json({token: TruongPhongToken, role: "1"})
                         }
                         else if (data[0].MaChucVu === "2"){
-                            const NhanVienToken = sign({username: data[0].MaTK}, "TruongPhong")
+                            const NhanVienToken = sign({username: data[0].MaTK}, "NhanVien")
                             res.json({token: NhanVienToken, role: "2"})
                         }
                     }
