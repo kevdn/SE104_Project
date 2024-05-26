@@ -101,7 +101,7 @@ router.post('/NhapHang', async (req, res) => {
     
 
     // Close the database connection.
-    await db.close();
+    //await db.close();
 
     // Return a success message to the user.
     res.send('Success');
