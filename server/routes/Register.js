@@ -3,22 +3,19 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const db = require('../middlewares/db');
 const checkUsername = async (username) => {
-    const sql = SELECT * FROM TAIKHOAN WHERE MaTK = '${username}';
+    const sql = `SELECT * FROM TAIKHOAN WHERE MaTK = '${username}'`;
     const [rows] = await db.promise().query(sql);
     return rows.length > 0;
 }
 
 const checkIdNumber = async (idNumber) => {
-    const sql = SELECT * FROM NHANVIEN WHERE CCCD = '${idNumber}';
+    const sql = `SELECT * FROM NHANVIEN WHERE CCCD = '${idNumber}'`;
     const [rows] = await db.promise().query(sql);
     return rows.length > 0;
 }
 
 router.post("/register", async (req, res) => {
     const { idNumber, username, password, name, role } = req.body;
-
-    await db.connect();
-
         const hash = await bcrypt.hash(password, 10);
         const userNameExists = await checkUsername(username);
         const idNumberExists = await checkIdNumber(idNumber);
@@ -36,18 +33,12 @@ router.post("/register", async (req, res) => {
             res.json("Register success");
         }
 
-    await db.close();
 });
 
 router.get("/register", async (req, res) => {
-    try {
-        const sql = "SELECT TenChucVu FROM CHUCVU";
-        const [data] = await db.query(sql);
+        const sql = "SELECT MaChucVu, TenChucVu FROM CHUCVU";
+        const [data] = await db.promise().query(sql);
         res.json(data);
-    } catch (error) {
-        console.error("Lỗi truy vấn:", error);
-        res.json("Failed");
-    }
 });
 
 module.exports = router;
