@@ -35,9 +35,9 @@ insert into `PHIEUNHAPHANG` values ('1', 1, '2021/01/20', 10, 60);
 insert into `PHIEUNHAPHANG` values ('2', 2, '2021/1/2', 20, 90);
 insert into `PHIEUNHAPHANG` values ('3', 3, '2021/1/3', 300, 450);
 
-insert into `SANPHAM` values ('1', 'guitar', 1, 100, '2022/03/12', 5, 10, 50);
-insert into `SANPHAM` values ('2', 'fridge', 2, 90, '2022/2/18', 5, 10, 50);
-insert into `SANPHAM` values ('3', 'chair', 3, 70, '2022/03/02', 5, 10, 50);
+insert into `SANPHAM` values ('1', 'ipad', 1, 100, '2022/03/12', 5, 10, 50);
+insert into `SANPHAM` values ('2', 'iphong', 2, 90, '2022/2/18', 5, 10, 50);
+insert into `SANPHAM` values ('3', 'macbook', 3, 70, '2022/03/02', 5, 10, 50);
 
 insert into `CT_PNH` values ('1', 1, 1, 5, 40, 30);
 insert into `CT_PNH` values ('2', 2, 2, 6, 10, 50);
