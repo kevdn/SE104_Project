@@ -53,7 +53,7 @@ router.post('/NhapHang', async (req, res) => {
     //if exists, update product
     for (let i = 0; i < data.products.length; i++) {
         const product = data.products[i];
-        const query = `SELECT * FROM SANPHAM WHERE MaSanPham = '${product.MaSanPham}'`;
+        const query = `SELECT * FROM SANPHAM WHERE TenSanPham = '${product.TenSanPham}'`;
         const [rows] = await db.promise().query(query);
         const [[productType]] = await db.promise().query(`SELECT MaLoaiSanPham FROM LOAISANPHAM WHERE TenLoaiSanPham = '${product.LoaiSanPham}'`);
         const productTypeId = productType.MaLoaiSanPham;
@@ -66,7 +66,7 @@ router.post('/NhapHang', async (req, res) => {
         } else {
             // Update the existing product in the database.
             //sql
-            const query = `UPDATE SANPHAM SET SoLuongTon = SoLuongTon + ${product.SoLuong} WHERE MaSanPham = '${product.MaSanPham}'`;
+            const query = `UPDATE SANPHAM SET SoLuongTon = SoLuongTon + ${product.SoLuong} WHERE MaSanPham = '${rows[0].MaSanPham}'`;
             await db.promise().query(query);
         }
         const [[productRow]] = await db.promise().query(`SELECT MaSanPham FROM SANPHAM WHERE TenSanPham = '${product.TenSanPham}'`);
