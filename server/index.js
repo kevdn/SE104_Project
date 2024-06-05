@@ -18,17 +18,11 @@ app.use('/', mainMenuRouter);
 const banHangRouter = require('./routes/BanHang');
 app.use('/', banHangRouter);
 
-const suaChuaRouter = require('./routes/SuaChua');
-app.use('/', suaChuaRouter);
-
 const baoCaoCongNoRouter = require('./routes/BaoCaoCongNo');
 app.use('/', baoCaoCongNoRouter);
 
 const baoCaoThangRouter = require('./routes/BaoCaoThang');
 app.use('/', baoCaoThangRouter);
-
-const baoHanhRouter = require('./routes/BaoHanh');
-app.use('/', baoHanhRouter);
 
 const changingRulesRouter = require('./routes/ChangingRules');
 app.use('/', changingRulesRouter);
@@ -41,9 +35,6 @@ app.use('/', devicesRouter);
 
 const nhapHangRouter = require('./routes/NhapHang');
 app.use('/', nhapHangRouter);
-
-const traHangRouter = require('./routes/TraHang');
-app.use('/', traHangRouter);
 
 const thanhToanRouter = require('./routes/ThanhToan');
 app.use('/', thanhToanRouter);
