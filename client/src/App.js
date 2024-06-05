@@ -29,11 +29,9 @@ function App() {
           <Route path="/ChangingRules" element={<ChangingRules />} />
           <Route path="/Devices" element={<Devices />} />
 
-          <Route path="/TraHang" element={<TraHang />} />
-          <Route path="/SuaChua" element={<SuaChua />} />
           <Route path="/BanHang" element={<BanHang />} />
           <Route path="/NhapHang" element={<NhapHang />} />
-          <Route path="/BaoHanh" element={<BaoHanh />} />
+          
           
           <Route path="/BaoCaoCongNo" element={<BaoCaoCongNo />} />
           <Route path="/BaoCaoThang" element={<BaoCaoThang />} />

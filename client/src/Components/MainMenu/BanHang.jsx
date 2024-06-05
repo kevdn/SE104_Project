@@ -166,8 +166,12 @@ const Content = () => {
                 if (response.data === "Success") {
                     alert(`Products sold successfully`);
                     window.location.reload();
+                } else if (response.data === "Product not found") {
+                    alert(`Không tìm thấy sản phẩm`);
+                } else if (response.data === "Not enough product") {
+                    alert(`Sản phẩm không đủ`);
                 } else {
-                    alert(`Failed to sell products: ${response.data}`);
+                    alert(`Có lỗi xảy ra`);
                 }
             })
             .catch((error) => {

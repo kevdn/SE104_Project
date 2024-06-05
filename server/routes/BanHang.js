@@ -34,20 +34,36 @@ router.post('/BanHang', async (req, res) => {
     // Check if the customers (data.TenKhachHang) exists in the database.
     //sql
     
-        const customerExists = await checkCustomer(data.TenKhachHang);
-        const customerTypeId = await checkCustomerType(data.LoaiKhachHang);
+    const customerExists = await checkCustomer(data.TenKhachHang);
+    const customerTypeId = await checkCustomerType(data.LoaiKhachHang);
         
-        // If the customer does not exist, insert the new customer into the database.
-        if (!customerExists) {
-            await insertCustomer(data.TenKhachHang, customerTypeId, data.SoDienThoai);
-        }
+    // If the customer does not exist, insert the new customer into the database.
+    if (!customerExists) {
+        await insertCustomer(data.TenKhachHang, customerTypeId, data.SoDienThoai);
+    }
         
     //update information of each product, reduce quantity of product in database, increase total number of product sold
     //sql
     for (let i = 0; i < data.products.length; i++) {
         const product = data.products[i];
+
+        // Check if the product exists in the database.
+        
+        let query = `SELECT * FROM SANPHAM WHERE TenSanPham = '${product.TenSanPham}'`;
+        const [rows] = await db.promise().query(query);
+        if (rows.length === 0) {
+            return res.json("Product not found");
+        }
+
+        //if product exists, check if the quantity of product is enough
+        query = `SELECT SoLuongTon FROM SANPHAM WHERE TenSanPham = '${product.TenSanPham}'`;
+        const [quantity] = await db.promise().query(query);
+        if (quantity[0].SoLuongTon < product.SoLuong) {
+            return res.json("Not enough product");
+        }
+
         //update information of product
-        const query = `UPDATE SANPHAM SET SoLuongTon = SoLuongTon - ${product.SoLuong}, SoLuongBan = SoLuongBan + ${product.SoLuong} WHERE TenSanPham = '${product.TenSanPham}'`;
+        query = `UPDATE SANPHAM SET SoLuongTon = SoLuongTon - ${product.SoLuong}, SoLuongBan = SoLuongBan + ${product.SoLuong} WHERE TenSanPham = '${product.TenSanPham}'`;
         await db.promise().query(query);
     }
 
