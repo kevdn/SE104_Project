@@ -7,11 +7,8 @@ import MainMenu from './Components/MainMenu/MainMenu';
 import Customers from './Components/MainMenu/Customers';
 import ChangingRules from './Components/MainMenu/ChangingRules';
 import Devices from './Components/MainMenu/Devices';
-import TraHang from './Components/MainMenu/TraHang';
-import SuaChua from './Components/MainMenu/SuaChua';
 import BanHang from './Components/MainMenu/BanHang';
 import NhapHang from './Components/MainMenu/NhapHang';
-import BaoHanh from './Components/MainMenu/BaoHanh';
 import BaoCaoCongNo from './Components/MainMenu/BaoCaoCongNo';
 import BaoCaoThang from './Components/MainMenu/BaoCaoThang';
 
